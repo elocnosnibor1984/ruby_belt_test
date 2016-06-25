@@ -1,0 +1,16 @@
+<a href="/songs">Dashboard</a> <a href="/logout">Logout</a>
+
+
+<p>Other users who added <%= @song.title %> </p>
+<table>
+	<thead>
+		<tr><th>Name</th><th>Times Added</th></tr>
+	</thead>
+	<tbody>
+	<% if @users %>
+	<% @users.each do |u| %>
+	<tr><td><a href="/users/<%= u.id %>"><%= u.first_name %> <%= u.last_name %></a></td><td><%= u.playlists.where(song:@song.id).first.adds %></td></tr>
+	<% end %>
+	<% end %>
+	</tbody>
+</table>
